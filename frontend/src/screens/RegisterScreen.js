@@ -54,10 +54,10 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Form.Group controlId='phone'>
-          <Form.Label>Phone Number</Form.Label>
+          <Form.Label>Phone</Form.Label>
           <Form.Control
             type='phone'
-            placeholder='Enter Phone Number'
+            placeholder='Enter phone'
             value={phone}
             onChange={(e) => setPhone(e.target.value)}></Form.Control>
         </Form.Group>
