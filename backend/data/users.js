@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs'
 
 const users = [
   {
@@ -8,15 +8,15 @@ const users = [
     isAdmin: true,
   },
   {
-    name: 'Ahmed Ghandour',
-    email: 'ahmed@example.com',
+    name: 'John Doe',
+    email: 'john@example.com',
     password: bcrypt.hashSync('123456', 10),
   },
   {
-    name: 'Ekhlas Helmi',
-    email: 'ekhlas@example.com',
+    name: 'Jane Doe',
+    email: 'jane@example.com',
     password: bcrypt.hashSync('123456', 10),
   },
-];
+]
 
-export default users;
+export default users

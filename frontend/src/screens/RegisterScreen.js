@@ -1,41 +1,40 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Form, Button, Row, Col } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
-import FormContainer from '../components/FormContainer';
-import { register } from '../actions/userActions';
+import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
+import { Form, Button, Row, Col } from 'react-bootstrap'
+import { useDispatch, useSelector } from 'react-redux'
+import Message from '../components/Message'
+import Loader from '../components/Loader'
+import FormContainer from '../components/FormContainer'
+import { register } from '../actions/userActions'
 
 const RegisterScreen = ({ location, history }) => {
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [message, setMessage] = useState(null);
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [message, setMessage] = useState(null)
 
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
-  const userRegister = useSelector((state) => state.userRegister);
-  const { loading, error, userInfo } = userRegister;
+  const userRegister = useSelector((state) => state.userRegister)
+  const { loading, error, userInfo } = userRegister
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
     if (userInfo) {
-      history.push(redirect);
+      history.push(redirect)
     }
-  }, [history, userInfo, redirect]);
+  }, [history, userInfo, redirect])
 
   const submitHandler = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (password !== confirmPassword) {
-      setMessage('Passwords do not match');
+      setMessage('Passwords do not match')
     } else {
-      dispatch(register(name, phone, email, password));
+      dispatch(register(name, email, password))
     }
-  };
+  }
 
   return (
     <FormContainer>
@@ -50,16 +49,8 @@ const RegisterScreen = ({ location, history }) => {
             type='name'
             placeholder='Enter name'
             value={name}
-            onChange={(e) => setName(e.target.value)}></Form.Control>
-        </Form.Group>
-
-        <Form.Group controlId='phone'>
-          <Form.Label>Phone</Form.Label>
-          <Form.Control
-            type='phone'
-            placeholder='Enter phone'
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}></Form.Control>
+            onChange={(e) => setName(e.target.value)}
+          ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='email'>
@@ -68,7 +59,8 @@ const RegisterScreen = ({ location, history }) => {
             type='email'
             placeholder='Enter email'
             value={email}
-            onChange={(e) => setEmail(e.target.value)}></Form.Control>
+            onChange={(e) => setEmail(e.target.value)}
+          ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='password'>
@@ -77,7 +69,8 @@ const RegisterScreen = ({ location, history }) => {
             type='password'
             placeholder='Enter password'
             value={password}
-            onChange={(e) => setPassword(e.target.value)}></Form.Control>
+            onChange={(e) => setPassword(e.target.value)}
+          ></Form.Control>
         </Form.Group>
 
         <Form.Group controlId='confirmPassword'>
@@ -86,7 +79,8 @@ const RegisterScreen = ({ location, history }) => {
             type='password'
             placeholder='Confirm password'
             value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          ></Form.Control>
         </Form.Group>
 
         <Button type='submit' variant='primary'>
@@ -103,7 +97,7 @@ const RegisterScreen = ({ location, history }) => {
         </Col>
       </Row>
     </FormContainer>
-  );
-};
+  )
+}
 
-export default RegisterScreen;
+export default RegisterScreen
